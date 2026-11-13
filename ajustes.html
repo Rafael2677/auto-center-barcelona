@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ajustes do site | Auto Center Barcelona</title>
+  <meta name="description" content="Formulário para a oficina dizer o que quer ajustar na prévia do site.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#101012">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Big+Shoulders+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { padding-bottom: 40px; }
+    .aj { max-width: 720px; margin: 0 auto; padding: 28px var(--margem) 20px; }
+    .aj__topo { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .aj__topo svg { width: 84px; height: auto; flex: none; }
+    .aj h1 { margin: 0; font-size: clamp(32px, 9vw, 48px); }
+    .aj__intro { margin-top: 12px; color: var(--texto-2); }
+    .aj form { display: grid; gap: 18px; margin-top: 28px; }
+    .grupo { padding: 18px 16px; background: var(--grafite); border: 1px solid var(--linha); border-radius: var(--raio); display: grid; gap: 14px; }
+    .grupo legend { float: left; width: 100%; display: flex; align-items: center; gap: 12px; margin-bottom: 4px; font: 700 23px/1.1 var(--titulo); text-transform: uppercase; letter-spacing: .03em; }
+    .grupo > * { clear: both; }
+    .campo input, .campo textarea { background: var(--asfalto); }
+    .campo small, .dica { font-size: 14px; color: var(--texto-2); line-height: 1.35; }
+    .opcoes { display: flex; flex-wrap: wrap; gap: 8px; }
+    .opcoes > span { flex-basis: 100%; font: 600 14px/1 var(--rotulo); letter-spacing: .14em; text-transform: uppercase; color: var(--texto-2); margin-bottom: 2px; }
+    .op { position: relative; }
+    .op input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+    .op span { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 15px; border-radius: 999px; border: 2px solid var(--linha); background: var(--asfalto); font-size: 15.5px; font-weight: 500; transition: all .15s; }
+    .op input:checked + span { background: var(--laranja); border-color: var(--laranja); color: var(--tinta); font-weight: 600; }
+    .op input:focus-visible + span { outline: 3px solid var(--azul-faixa); outline-offset: 3px; }
+    .fim { display: grid; gap: 10px; margin-top: 6px; }
+    .previa { white-space: pre-wrap; padding: 16px; border-radius: 4px 4px 12px 12px; background: var(--creme); color: var(--tinta); font-size: 15px; line-height: 1.45; max-height: 320px; overflow: auto; }
+    .aj__rodape { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--linha); font-size: 14px; color: var(--texto-2); }
+    .aj__rodape a { color: var(--laranja); }
+    .aviso { bottom: 24px; }
+  </style>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="carro" viewBox="0 0 320 136">
+      <circle cx="240" cy="112" r="20" fill="var(--pneu)"/>
+      <circle cx="240" cy="112" r="14" fill="var(--banda)"/>
+      <path fill="var(--lataria)" d="M24 110C17 100 19 84 34 76c26-11 62-12 96-12 8-16 22-27 43-28 24-2 45 4 61 16 20 14 42 20 58 28 11 6 13 21 6 30H111.9A24 24 0 0 0 64.1 110Z"/>
+      <path fill="var(--vidro)" d="M139 64c6-11 17-20 33-22l11-.5V64Zm50-22.5c17-1 32 6 46 22.5h-46Z"/>
+      <path fill="none" stroke="var(--cromo)" stroke-width="3" stroke-linecap="round" d="M132 84c52-2 104 0 160 8"/>
+      <rect x="13" y="103" width="24" height="8" rx="4" fill="var(--cromo)"/>
+      <rect x="286" y="103" width="24" height="8" rx="4" fill="var(--cromo)"/>
+      <circle cx="35" cy="87" r="5.5" fill="var(--farol)"/>
+      <circle cx="88" cy="112" r="20" fill="var(--pneu)"/>
+      <circle cx="88" cy="112" r="14" fill="var(--banda)"/>
+      <circle cx="88" cy="112" r="8" fill="var(--pneu)"/>
+      <circle cx="88" cy="112" r="3" fill="var(--cromo)"/>
+    </symbol>
+  </svg>
+
+  <main class="aj">
+    <div class="aj__topo">
+      <svg viewBox="0 0 320 136" aria-hidden="true"><use href="#carro"/></svg>
+      <p class="olho">Auto Center Barcelona</p>
+    </div>
+    <h1>Deixe o site do seu jeito.</h1>
+    <p class="aj__intro">Responda só o que quiser mudar ou completar na prévia. O que ficar em branco continua como está. No fim, é só enviar as respostas para a Patron.</p>
+
+    <form id="form-ajustes" novalidate>
+      <fieldset class="grupo" data-titulo="A OFICINA">
+        <legend><span class="passo__num">1</span> A oficina</legend>
+        <label class="campo"><span>Nome que deve aparecer no site</span>
+          <input type="text" data-rotulo="Nome no site" maxlength="80" placeholder="Ex.: Auto Center Barcelona"></label>
+        <label class="campo"><span>Ano em que a oficina começou</span>
+          <input type="text" data-rotulo="Ano de fundação" inputmode="numeric" maxlength="4" placeholder="Ex.: o ano que está na placa"></label>
+        <label class="campo"><span>Quem está por trás do balcão</span>
+          <input type="text" data-rotulo="Nomes que podem aparecer" maxlength="120" placeholder="Nomes que podem aparecer no site">
+          <small>Só escreva os nomes que vocês querem mostrar.</small></label>
+        <label class="campo"><span>A história em poucas linhas</span>
+          <textarea data-rotulo="História" rows="3" maxlength="600" placeholder="Como começou, o que vocês fazem questão de manter"></textarea></label>
+      </fieldset>
+
+      <fieldset class="grupo" data-titulo="CONTATO E ENDEREÇO">
+        <legend><span class="passo__num">2</span> Contato e endereço</legend>
+        <label class="campo"><span>WhatsApp para o botão do site</span>
+          <input type="tel" data-rotulo="WhatsApp do site" autocomplete="tel" maxlength="20" placeholder="(11) 9....-...."></label>
+        <label class="campo"><span>Telefone fixo</span>
+          <input type="tel" data-rotulo="Telefone fixo" maxlength="20" placeholder="Hoje está (11) 5118-5058"></label>
+        <div class="opcoes" role="group" aria-label="Número do endereço"><span>Número na Rua Joana Angélica</span>
+          <label class="op"><input type="radio" name="numero" data-rotulo="Número do endereço" value="608"><span>608</span></label>
+          <label class="op"><input type="radio" name="numero" data-rotulo="Número do endereço" value="634"><span>634</span></label>
+          <label class="op"><input type="radio" name="numero" data-rotulo="Número do endereço" value="outro (ver observações)"><span>Outro</span></label>
+        </div>
+        <label class="campo"><span>Instagram ou outra rede</span>
+          <input type="text" data-rotulo="Redes sociais" maxlength="80" placeholder="@..."></label>
+      </fieldset>
+
+      <fieldset class="grupo" data-titulo="SERVIÇOS">
+        <legend><span class="passo__num">3</span> Serviços</legend>
+        <div class="opcoes" role="group" aria-label="Serviços que devem aparecer"><span>Marque os que devem aparecer</span>
+          <label class="op"><input type="checkbox" data-rotulo="Serviços no site" value="Óleo e filtros" checked><span>Óleo e filtros</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Serviços no site" value="Alinhamento e balanceamento" checked><span>Alinhamento e balanceamento</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Serviços no site" value="Freios" checked><span>Freios</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Serviços no site" value="Suspensão" checked><span>Suspensão</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Serviços no site" value="Escapamento" checked><span>Escapamento</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Serviços no site" value="Pneus" checked><span>Pneus</span></label>
+        </div>
+        <label class="campo"><span>Outros serviços para incluir</span>
+          <textarea data-rotulo="Outros serviços" rows="2" maxlength="300" placeholder="Ex.: os que faltaram na lista"></textarea></label>
+        <label class="campo"><span>Marcas ou tipos de carro que atendem</span>
+          <input type="text" data-rotulo="Marcas atendidas" maxlength="120" placeholder="Ex.: nacionais e importados"></label>
+      </fieldset>
+
+      <fieldset class="grupo" data-titulo="PAGAMENTO E HORÁRIO">
+        <legend><span class="passo__num">4</span> Pagamento e horário</legend>
+        <div class="opcoes" role="group" aria-label="Formas de pagamento"><span>Formas de pagamento</span>
+          <label class="op"><input type="checkbox" data-rotulo="Pagamento" value="Crédito" checked><span>Crédito</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Pagamento" value="Débito" checked><span>Débito</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Pagamento" value="Aproximação" checked><span>Aproximação</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Pagamento" value="Pix"><span>Pix</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Pagamento" value="Dinheiro"><span>Dinheiro</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Pagamento" value="Parcelamento"><span>Parcelamento</span></label>
+        </div>
+        <div class="opcoes" role="group" aria-label="Horário"><span>Seg a sex 08:30–18:00 · sáb 08:30–12:00</span>
+          <label class="op"><input type="radio" name="horario" data-rotulo="Horário" value="está certo"><span>Está certo</span></label>
+          <label class="op"><input type="radio" name="horario" data-rotulo="Horário" value="precisa corrigir"><span>Precisa corrigir</span></label>
+        </div>
+        <label class="campo"><span>Horário correto, se mudou</span>
+          <input type="text" data-rotulo="Horário correto" maxlength="120" placeholder="Ex.: fecha para almoço das 12h às 13h"></label>
+      </fieldset>
+
+      <fieldset class="grupo" data-titulo="VISUAL, FOTOS E LOGO">
+        <legend><span class="passo__num">5</span> Visual, fotos e logo</legend>
+        <div class="opcoes" role="group" aria-label="O que achou do visual"><span>O visual da prévia</span>
+          <label class="op"><input type="radio" name="visual" data-rotulo="Visual" value="pode ficar assim"><span>Pode ficar assim</span></label>
+          <label class="op"><input type="radio" name="visual" data-rotulo="Visual" value="quero ajustar"><span>Quero ajustar</span></label>
+        </div>
+        <label class="campo"><span>O que mudar em cores, textos ou ordem</span>
+          <textarea data-rotulo="Mudanças no visual e nos textos" rows="3" maxlength="600" placeholder="Ex.: trocar a frase do início, destacar o escapamento"></textarea></label>
+        <div class="opcoes" role="group" aria-label="Material que vão enviar"><span>O que vocês vão mandar pelo WhatsApp</span>
+          <label class="op"><input type="checkbox" data-rotulo="Vão enviar" value="arquivo da logo"><span>Arquivo da logo</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Vão enviar" value="fotos da oficina"><span>Fotos da oficina</span></label>
+          <label class="op"><input type="checkbox" data-rotulo="Vão enviar" value="fotos da equipe"><span>Fotos da equipe</span></label>
+        </div>
+        <p class="dica">As fotos e a logo vão direto na conversa do WhatsApp, depois de enviar este formulário.</p>
+      </fieldset>
+
+      <fieldset class="grupo" data-titulo="PARA FECHAR">
+        <legend><span class="passo__num">6</span> Para fechar</legend>
+        <label class="campo"><span>Mais alguma coisa?</span>
+          <textarea data-rotulo="Observações" rows="3" maxlength="600" placeholder="Qualquer pedido que não coube acima"></textarea></label>
+        <label class="campo"><span>Quem respondeu</span>
+          <input type="text" data-rotulo="Respondido por" autocomplete="name" maxlength="60" placeholder="Seu nome"></label>
+      </fieldset>
+
+      <div class="fim">
+        <div class="previa" id="previa" aria-live="polite" aria-label="Resumo das respostas"></div>
+        <button type="button" class="btn btn--laranja" id="btn-enviar">Enviar pelo WhatsApp</button>
+        <button type="button" class="btn btn--contorno" id="btn-copiar-ajustes"><span id="btn-copiar-ajustes-texto">Copiar respostas</span></button>
+        <p class="dica">Ao tocar em enviar, o WhatsApp abre com as respostas escritas: escolha a conversa com a Patron e envie. Nada é gravado neste site.</p>
+      </div>
+    </form>
+
+    <p class="aj__rodape"><a href="./">Voltar para a prévia do site</a> · Site por <strong>Patron</strong></p>
+  </main>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+  <script>
+  (function () {
+    'use strict';
+    var form = document.getElementById('form-ajustes'), previa = document.getElementById('previa'), aviso = document.getElementById('aviso'), t;
+
+    function avisar(msg) {
+      aviso.textContent = msg; aviso.setAttribute('data-ativo', 'sim');
+      clearTimeout(t); t = setTimeout(function () { aviso.removeAttribute('data-ativo'); }, 3600);
+    }
+
+    function montar() {
+      var linhas = ['AJUSTES DO SITE - Auto Center Barcelona'];
+      form.querySelectorAll('fieldset[data-titulo]').forEach(function (grupo) {
+        var itens = [], ordem = [], mapa = {};
+        grupo.querySelectorAll('[data-rotulo]').forEach(function (el) {
+          var rotulo = el.getAttribute('data-rotulo'), valor = '';
+          if (el.type === 'checkbox' || el.type === 'radio') { if (el.checked) valor = el.value; }
+          else valor = el.value.trim().replace(/\s+/g, ' ');
+          if (!(rotulo in mapa)) { mapa[rotulo] = []; ordem.push(rotulo); }
+          if (valor) mapa[rotulo].push(valor);
+        });
+        ordem.forEach(function (r) { if (mapa[r].length) itens.push('- ' + r + ': ' + mapa[r].join(', ')); });
+        if (itens.length) { linhas.push('', grupo.getAttribute('data-titulo')); linhas = linhas.concat(itens); }
+      });
+      return linhas.join('\n');
+    }
+
+    function atualizar() { previa.textContent = montar(); }
+    form.addEventListener('input', atualizar);
+    form.addEventListener('change', atualizar);
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    atualizar();
+
+    document.getElementById('btn-enviar').addEventListener('click', function () {
+      window.open('https://wa.me/?text=' + encodeURIComponent(montar()), '_blank', 'noopener');
+    });
+
+    document.getElementById('btn-copiar-ajustes').addEventListener('click', function () {
+      var texto = montar(), rotulo = document.getElementById('btn-copiar-ajustes-texto');
+      var p = (navigator.clipboard && window.isSecureContext) ? navigator.clipboard.writeText(texto) : new Promise(function (ok, erro) {
+        var a = document.createElement('textarea'); a.value = texto; a.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(a); a.select();
+        try { document.execCommand('copy') ? ok() : erro(); } catch (e) { erro(e); }
+        document.body.removeChild(a);
+      });
+      p.then(function () {
+        rotulo.textContent = 'Respostas copiadas'; avisar('Respostas copiadas. Cole na conversa com a Patron.');
+        setTimeout(function () { rotulo.textContent = 'Copiar respostas'; }, 2600);
+      }, function () { avisar('Não foi possível copiar aqui. Use o botão do WhatsApp.'); });
+    });
+  })();
+  </script>
+</body>
+</html>
